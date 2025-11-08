@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاعل بلس - تزويد التفاعل والمتابعين والعملات مجاناً</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --secondary: #4a44c6;
+            --accent: #ff6584;
+            --dark: #2a2a4a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7ff;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4d6d;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .free-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            color: var(--dark);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Forms Section */
+        .forms-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .forms-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .form-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+        }
+
+        .select-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .select-group select {
+            flex: 1;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--success);
+            margin: 15px 0;
+        }
+
+        .get-service {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .get-service:hover {
+            background-color: var(--secondary);
+        }
+
+        .get-service:disabled {
+            background-color: var(--gray);
+            cursor: not-allowed;
+        }
+
+        /* Games Section */
+        .games-section {
+            padding: 80px 0;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .game-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .game-image {
+            height: 150px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+
+        .game-content {
+            padding: 20px;
+        }
+
+        .game-content h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Ads */
+        .ad-container {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ad-sidebar {
+            width: 160px;
+            height: 600px;
+            background-color: #f0f0f0;
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            color: var(--gray);
+        }
+
+        /* Popup Ad */
+        .popup-ad {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .popup-ad.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .countdown {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Notifications */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.active {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-right: 4px solid var(--success);
+        }
+
+        .notification.warning {
+            border-right: 4px solid var(--warning);
+        }
+
+        .notification.error {
+            border-right: 4px solid var(--danger);
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+        }
+
+        .notification.success .notification-icon {
+            color: var(--success);
+        }
+
+        .notification.warning .notification-icon {
+            color: var(--warning);
+        }
+
+        .notification.error .notification-icon {
+            color: var(--danger);
+        }
+
+        /* Timer */
+        .timer {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #fff3cd;
+            border-radius: 5px;
+            color: #856404;
+        }
+
+        .timer.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .ad-sidebar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .forms-container {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card, .form-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .services-grid, .games-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .select-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                    <span>تفاعل بلس</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">الرئيسية</a></li>
+                        <li><a href="#interaction">تزويد التفاعل</a></li>
+                        <li><a href="#followers">تزويد المتابعين</a></li>
+                        <li><a href="#games">كسب عملات الألعاب</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <button class="btn btn-outline">حسابي</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="free-badge">مجاني بالكامل!</div>
+            <h1>زود تفاعلك على وسائل التواصل الاجتماعي مجاناً</h1>
+            <p>احصل على تفاعل حقيقي ومتابعين وعملات لألعابك المفضلة مجاناً تماماً. كل عملية تحتاج لانتظار 20 دقيقة فقط</p>
+            <button class="btn btn-primary">ابدأ الآن</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">خدماتنا المجانية</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>تزويد التفاعل</h3>
+                    <p>احصل على لايكات وتعليقات ومشاركات حقيقية لمنشوراتك على فيسبوك، انستجرام، تيك توك وتويتر مجاناً</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>تزويد المتابعين</h3>
+                    <p>زود عدد متابعيك على جميع منصات التواصل الاجتماعي بمتابعين حقيقيين ونشطين مجاناً</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>عملات الألعاب</h3>
+                    <p>احصل على عملات وجواهر لألعابك المفضلة مثل فري فاير وبابجي مجاناً تماماً</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ads -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-sidebar">
+                <!-- إعلان -->
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '1333b27d45848599574868956a16a6ee',
+                        'format' : 'iframe',
+                        'height' : 300,
+                        'width' : 160,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/1333b27d45848599574868956a16a6ee/invoke.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interaction Section -->
+    <section class="forms-section" id="interaction">
+        <div class="container">
+            <h2 class="section-title">تزويد التفاعل المجاني</h2>
+            <div class="forms-container">
+                <div class="form-card">
+                    <h3><i class="fab fa-facebook"></i> فيسبوك</h3>
+                    <div class="form-group">
+                        <label for="fb-post-url">رابط المنشور</label>
+                        <input type="url" id="fb-post-url" class="form-control" placeholder="https://www.facebook.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb-interaction-type">نوع التفاعل</label>
+                        <div class="select-group">
+                            <select id="fb-interaction-type" class="form-control">
+                                <option value="likes">لايكات</option>
+                                <option value="comments">تعليقات</option>
+                                <option value="shares">مشاركات</option>
+                            </select>
+                            <div class="quantity-control">
+                                <button class="quantity-btn" id="fb-decrease">-</button>
+                                <input type="number" id="fb-quantity" class="form-control quantity-input" value="100" min="100" max="1000">
+                                <button class="quantity-btn" id="fb-increase">-</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price">مجاناً!</div>
+                    <button class="get-service" data-service="فيسبوك - لايكات">احصل على الخدمة</button>
+                </div>
+
+                <div class="form-card">
+                    <h3><i class="fab fa-instagram"></i> انستجرام</h3>
+                    <div class="form-group">
+                        <label for="ig-post-url">رابط المنشور</label>
+                        <input type="url" id="ig-post-url" class="form-control" placeholder="https://www.instagram.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label for="ig-interaction-type">نوع التفاعل</label>
+                        <div class="select-group">
+                            <select id="ig-interaction-type" class="form-control">
+                                <option value="likes">لايكات</option>
+                                <option value="comments">تعليقات</option>
+                                <option value="followers">متابعين</option>
+                            </select>
+                            <div class="quantity-control">
+                                <button class="quantity-btn" id="ig-decrease">-</button>
+                                <input type="number" id="ig-quantity" class="form-control quantity-input" value="100" min="100" max="1000">
+                                <button class="quantity-btn" id="ig-increase">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price">مجاناً!</div>
+                    <button class="get-service" data-service="انستجرام - لايكات">احصل على الخدمة</button>
+                </div>
+
+                <div class="form-card">
+                    <h3><i class="fab fa-tiktok"></i> تيك توك</h3>
+                    <div class="form-group">
+                        <label for="tt-post-url">رابط المنشور</label>
+                        <input type="url" id="tt-post-url" class="form-control" placeholder="https://www.tiktok.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label for="tt-interaction-type">نوع التفاعل</label>
+                        <div class="select-group">
+                            <select id="tt-interaction-type" class="form-control">
+                                <option value="likes">لايكات</option>
+                                <option value="comments">تعليقات</option>
+                                <option value="shares">مشاركات</option>
+                            </select>
+                            <div class="quantity-control">
+                                <button class="quantity-btn" id="tt-decrease">-</button>
+                                <input type="number" id="tt-quantity" class="form-control quantity-input" value="100" min="100" max="1000">
+                                <button class="quantity-btn" id="tt-increase">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price">مجاناً!</div>
+                    <button class="get-service" data-service="تيك توك - لايكات">احصل على الخدمة</button>
+                </div>
+
+                <div class="form-card">
+                    <h3><i class="fab fa-twitter"></i> تويتر</h3>
+                    <div class="form-group">
+                        <label for="tw-post-url">رابط المنشور</label>
+                        <input type="url" id="tw-post-url" class="form-control" placeholder="https://www.twitter.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label for="tw-interaction-type">نوع التفاعل</label>
+                        <div class="select-group">
+                            <select id="tw-interaction-type" class="form-control">
+                                <option value="likes">لايكات</option>
+                                <option value="retweets">إعادات التغريدة</option>
+                                <option value="comments">تعليقات</option>
+                            </select>
+                            <div class="quantity-control">
+                                <button class="quantity-btn" id="tw-decrease">-</button>
+                                <input type="number" id="tw-quantity" class="form-control quantity-input" value="100" min="100" max="1000">
+                                <button class="quantity-btn" id="tw-increase">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price">مجاناً!</div>
+                    <button class="get-service" data-service="تويتر - لايكات">احصل على الخدمة</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ads -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-sidebar">
+                <!-- إعلان -->
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '1333b27d45848599574868956a16a6ee',
+                        'format' : 'iframe',
+                        'height' : 300,
+                        'width' : 160,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/1333b27d45848599574868956a16a6ee/invoke.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Followers Section -->
+    <section class="forms-section" id="followers">
+        <div class="container">
+            <h2 class="section-title">تزويد المتابعين المجاني</h2>
+            <div class="forms-container">
+                <div class="form-card">
+                    <h3><i class="fab fa-facebook"></i> فيسبوك</h3>
+                    <div class="form-group">
+                        <label for="fb-profile-url">رابط الصفحة</label>
+                        <input type="url" id="fb-profile-url" class="form-control" placeholder="https://www.facebook.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb-followers-quantity">عدد المتابعين</label>
+                        <div class="quantity-control">
+                            <button class="quantity-btn" id="fb-followers-decrease">-</button>
+                            <input type="number" id="fb-followers-quantity" class="form-control quantity-input" value="100" min="100" max="1000">
+                            <button class="quantity-btn" id="fb-followers-increase">+</button>
+                        </div>
+                    </div>
+                    <div class="price">مجاناً!</div>
+                    <button class="get-service" data-service="فيسبوك - متابعين">احصل على الخدمة</button>
+                </div>
+
+                <div class="form-card">
+                    <h3><i class="fab fa-instagram"></i> انستجرام</h3>
+                    <div class="form-group">
+                        <label for="ig-profile-url">رابط الحساب</label>
+                        <input type="url" id="ig-profile-url" class="form-control" placeholder="https://www.instagram.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label for="ig-followers-quantity">عدد المتابعين</label>
+                        <div class="quantity-control">
+                            <button class="quantity-btn" id="ig-followers-decrease">-</button>
+                            <input type="number" id="ig-followers-quantity" class="form-control quantity-input" value="100" min="100" max="1000">
+                            <button class="quantity-btn" id="ig-followers-increase">+</button>
+                        </div>
+                    </div>
+                    <div class="price">مجاناً!</div>
+                    <button class="get-service" data-service="انستجرام - متابعين">احصل على الخدمة</button>
+                </div>
+
+                <div class="form-card">
+                    <h3><i class="fab fa-tiktok"></i> تيك توك</h3>
+                    <div class="form-group">
+                        <label for="tt-profile-url">رابط الحساب</label>
+                        <input type="url" id="tt-profile-url" class="form-control" placeholder="https://www.tiktok.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label for="tt-followers-quantity">عدد المتابعين</label>
+                        <div class="quantity-control">
+                            <button class="quantity-btn" id="tt-followers-decrease">-</button>
+                            <input type="number" id="tt-followers-quantity" class="form-control quantity-input" value="100" min="100" max="1000">
+                            <button class="quantity-btn" id="tt-followers-increase">+</button>
+                        </div>
+                    </div>
+                    <div class="price">مجاناً!</div>
+                    <button class="get-service" data-service="تيك توك - متابعين">احصل على الخدمة</button>
+                </div>
+
+                <div class="form-card">
+                    <h3><i class="fab fa-twitter"></i> تويتر</h3>
+                    <div class="form-group">
+                        <label for="tw-profile-url">رابط الحساب</label>
+                        <input type="url" id="tw-profile-url" class="form-control" placeholder="https://www.twitter.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label for="tw-followers-quantity">عدد المتابعين</label>
+                        <div class="quantity-control">
+                            <button class="quantity-btn" id="tw-followers-decrease">-</button>
+                            <input type="number" id="tw-followers-quantity" class="form-control quantity-input" value="100" min="100" max="1000">
+                            <button class="quantity-btn" id="tw-followers-increase">+</button>
+                        </div>
+                    </div>
+                    <div class="price">مجاناً!</div>
+                    <button class="get-service" data-service="تويتر - متابعين">احصل على الخدمة</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ads -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-sidebar">
+                <!-- إعلان -->
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '1333b27d45848599574868956a16a6ee',
+                        'format' : 'iframe',
+                        'height' : 300,
+                        'width' : 160,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/1333b27d45848599574868956a16a6ee/invoke.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Games Section -->
+    <section class="games-section" id="games">
+        <div class="container">
+            <h2 class="section-title">كسب عملات الألعاب المجانية</h2>
+            <div class="forms-container">
+                <div class="form-card">
+                    <h3><i class="fas fa-fire"></i> فري فاير</h3>
+                    <div class="form-group">
+                        <label for="ff-player-id">معرف اللاعب (ID)</label>
+                        <input type="text" id="ff-player-id" class="form-control" placeholder="أدخل معرف اللاعب">
+                    </div>
+                    <div class="form-group">
+                        <label for="ff-currency-type">نوع العملة</label>
+                        <select id="ff-currency-type" class="form-control">
+                            <option value="diamonds">جواهر</option>
+                            <option value="coins">عملات</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ff-currency-quantity">الكمية</label>
+                        <div class="quantity-control">
+                            <button class="quantity-btn" id="ff-currency-decrease">-</button>
+                            <input type="number" id="ff-currency-quantity" class="form-control quantity-input" value="100" min="100" max="1000">
+                            <button class="quantity-btn" id="ff-currency-increase">+</button>
+                        </div>
+                    </div>
+                    <div class="price">مجاناً!</div>
+                    <button class="get-service" data-service="فري فاير - جواهر">احصل على الخدمة</button>
+                </div>
+
+                <div class="form-card">
+                    <h3><i class="fas fa-battle-net"></i> ببجي</h3>
+                    <div class="form-group">
+                        <label for="pubg-player-id">معرف اللاعب (ID)</label>
+                        <input type="text" id="pubg-player-id" class="form-control" placeholder="أدخل معرف اللاعب">
+                    </div>
+                    <div class="form-group">
+                        <label for="pubg-currency-type">نوع العملة</label>
+                        <select id="pubg-currency-type" class="form-control">
+                            <option value="uc">UC</option>
+                            <option value="coins">عملات</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pubg-currency-quantity">الكمية</label>
+                        <div class="quantity-control">
+                            <button class="quantity-btn" id="pubg-currency-decrease">-</button>
+                            <input type="number" id="pubg-currency-quantity" class="form-control quantity-input" value="100" min="100" max="1000">
+                            <button class="quantity-btn" id="pubg-currency-increase">+</button>
+                        </div>
+                    </div>
+                    <div class="price">مجاناً!</div>
+                    <button class="get-service" data-service="ببجي - UC">احصل على الخدمة</button>
+                </div>
+            </div>
+
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="game-content">
+                        <h3>فري فاير</h3>
+                        <p>احصل على جواهر وعملات فري فاير مجاناً</p>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <i class="fas fa-battle-net"></i>
+                    </div>
+                    <div class="game-content">
+                        <h3>ببجي</h3>
+                        <p>زود رصيد UC وعملات ببجي مجاناً</p>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <div class="game-content">
+                        <h3>كول أوف ديوتي</h3>
+                        <p>احصل على عملات ونقاط كول أوف ديوتي مجاناً</p>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">
+                        <i class="fas fa-ghost"></i>
+                    </div>
+                    <div class="game-content">
+                        <h3>جينشين إمباكت</h3>
+                        <p>زود عدد الأحجار الأولية في جينشين إمباكت مجاناً</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timer -->
+    <div class="container">
+        <div class="timer" id="cooldownTimer">
+            <i class="fas fa-clock"></i>
+            <span>لا يمكنك إجراء عملية أخرى إلا بعد: <span id="timerCountdown">20:00</span> دقيقة</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>تفاعل بلس</h3>
+                    <p>نقدم خدمات تزويد التفاعل والمتابعين وعملات الألعاب مجاناً بالكامل. كل عملية تحتاج لانتظار 20 دقيقة فقط.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#interaction">تزويد التفاعل</a></li>
+                        <li><a href="#followers">تزويد المتابعين</a></li>
+                        <li><a href="#games">عملات الألعاب</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>خدماتنا</h3>
+                    <ul>
+                        <li><a href="#">فيسبوك</a></li>
+                        <li><a href="#">انستجرام</a></li>
+                        <li><a href="#">تيك توك</a></li>
+                        <li><a href="#">تويتر</a></li>
+                        <li><a href="#">فري فاير</a></li>
+                        <li><a href="#">ببجي</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@tafaol-plus.com</li>
+                        <li><i class="fas fa-phone"></i> +1234567890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> المملكة العربية السعودية</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023 تفاعل بلس. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Popup Ad -->
+    <div class="popup-ad" id="popupAd">
+        <div class="popup-content">
+            <button class="popup-close" id="popupClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3>إعلان</h3>
+            <p>شاهد هذا الإعلان لمدة 5 ثوانٍ للمتابعة</p>
+            <div class="countdown" id="adCountdown">5</div>
+            <!-- مساحة الإعلان -->
+            <div id="adSpace">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '1333b27d45848599574868956a16a6ee',
+                        'format' : 'iframe',
+                        'height' : 300,
+                        'width' : 160,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/1333b27d45848599574868956a16a6ee/invoke.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-content">
+            <h4>تمت العملية بنجاح</h4>
+            <p id="notificationMessage">تم تقديم طلبك بنجاح</p>
+        </div>
+    </div>
+
+    <script>
+        // العناصر الأساسية في DOM
+        const getServiceButtons = document.querySelectorAll('.get-service');
+        const popupAd = document.getElementById('popupAd');
+        const popupClose = document.getElementById('popupClose');
+        const adCountdown = document.getElementById('adCountdown');
+        const notification = document.getElementById('notification');
+        const notificationMessage = document.getElementById('notificationMessage');
+        const cooldownTimer = document.getElementById('cooldownTimer');
+        const timerCountdown = document.getElementById('timerCountdown');
+
+        // حالة التبريد
+        let isCooldown = false;
+        let cooldownTime = 20 * 60; // 20 دقيقة بالثواني
+
+        // إتمام عملية الخدمة
+        getServiceButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (isCooldown) {
+                    showNotification('لا يمكنك إجراء عملية جديدة الآن، يرجى الانتظار حتى انتهاء المهلة', 'warning');
+                    return;
+                }
+
+                const service = button.getAttribute('data-service');
+                
+                // التحقق من إدخال البيانات المطلوبة
+                const formCard = button.closest('.form-card');
+                const urlInput = formCard.querySelector('input[type="url"]');
+                const textInput = formCard.querySelector('input[type="text"]');
+                
+                if (urlInput && !urlInput.value) {
+                    showNotification('يرجى إدخال الرابط المطلوب', 'error');
+                    return;
+                }
+                
+                if (textInput && !textInput.value) {
+                    showNotification('يرجى إدخال معرف اللاعب', 'error');
+                    return;
+                }
+                
+                // إظهار الإعلان المنبثق
+                showPopupAd(service);
+            });
+        });
+
+        // إظهار الإعلان المنبثق
+        function showPopupAd(service) {
+            popupAd.classList.add('active');
+            let count = 5;
+            
+            const countdownInterval = setInterval(() => {
+                count--;
+                adCountdown.textContent = count;
+                
+                if (count <= 0) {
+                    clearInterval(countdownInterval);
+                    popupAd.classList.remove('active');
+                    
+                    // بعد انتهاء الإعلان، معالجة الطلب
+                    processServiceRequest(service);
+                }
+            }, 1000);
+        }
+
+        // معالجة طلب الخدمة
+        function processServiceRequest(service) {
+            // بدء فترة التبريد
+            startCooldown();
+            
+            // إظهار رسالة نجاح
+            showNotification(`تم تقديم طلب ${service} بنجاح! سيتم معالجته قريباً.`, 'success');
+            
+            // تعطيل جميع الأزرار مؤقتاً
+            getServiceButtons.forEach(button => {
+                button.disabled = true;
+            });
+        }
+
+        // إغلاق الإعلان المنبثق
+        popupClose.addEventListener('click', () => {
+            popupAd.classList.remove('active');
+        });
+
+        // إظهار الإشعارات
+        function showNotification(message, type) {
+            notification.className = `notification ${type}`;
+            notificationMessage.textContent = message;
+            
+            // تغيير الأيقونة بناءً على نوع الإشعار
+            const icon = notification.querySelector('.notification-icon i');
+            icon.className = 
+                type === 'success' ? 'fas fa-check-circle' :
+                type === 'warning' ? 'fas fa-exclamation-triangle' :
+                'fas fa-exclamation-circle';
+            
+            notification.classList.add('active');
+            
+            // إخفاء الإشعار بعد 5 ثوانٍ
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 5000);
+        }
+
+        // بدء فترة التبريد
+        function startCooldown() {
+            isCooldown = true;
+            cooldownTimer.classList.add('active');
+            
+            // تعطيل جميع أزرار الخدمة
+            getServiceButtons.forEach(button => {
+                button.disabled = true;
+            });
+            
+            const cooldownInterval = setInterval(() => {
+                cooldownTime--;
+                
+                const minutes = Math.floor(cooldownTime / 60);
+                const seconds = cooldownTime % 60;
+                
+                timerCountdown.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                
+                if (cooldownTime <= 0) {
+                    clearInterval(cooldownInterval);
+                    isCooldown = false;
+                    cooldownTimer.classList.remove('active');
+                    cooldownTime = 20 * 60; // إعادة تعيين الوقت
+                    
+                    // تمكين جميع أزرار الخدمة
+                    getServiceButtons.forEach(button => {
+                        button.disabled = false;
+                    });
+                    
+                    showNotification('يمكنك الآن إجراء عملية جديدة', 'success');
+                }
+            }, 1000);
+        }
+
+        // التحكم في الكميات
+        document.querySelectorAll('.quantity-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const isIncrease = e.currentTarget.textContent === '+';
+                const input = e.currentTarget.parentElement.querySelector('.quantity-input');
+                let value = parseInt(input.value);
+                
+                if (isIncrease) {
+                    value += 100;
+                    if (value > 1000) value = 1000;
+                } else {
+                    value = Math.max(100, value - 100);
+                }
+                
+                input.value = value;
+            });
+        });
+
+        // التحقق من معرف اللاعب في قسم الألعاب
+        document.querySelectorAll('input[type="text"][id$="player-id"]').forEach(input => {
+            input.addEventListener('blur', () => {
+                if (input.value.trim() !== '') {
+                    // محاكاة التحقق من المعرف
+                    setTimeout(() => {
+                        showNotification('تم التحقق من معرف اللاعب بنجاح', 'success');
+                    }, 1000);
+                }
+            });
+        });
+
+        // تمكين الأزرار عند تحميل الصفحة
+        window.addEventListener('load', () => {
+            getServiceButtons.forEach(button => {
+                button.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
